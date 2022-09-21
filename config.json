@@ -1,0 +1,12 @@
+{
+	"busses": [
+		{
+			"id": "1",
+			"device": "/dev/ttyUSB0",
+			"baudrate": "4800",
+			"mode": "8o1",
+			"address": "0x42"
+		}
+	],
+	"messageformat": "messageformat.json"
+}
