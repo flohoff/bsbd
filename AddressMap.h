@@ -11,12 +11,12 @@
 
 class Address {
     public:
-	VType		*vtype;
+	VT::Default	*vtype;
 	uint32_t	address;
 	std::string	name;
 
 	public:
-		Address(uint32_t address, VType *vt, std::string& name) : address(address), vtype(vt), name(name) {
+		Address(uint32_t address, VT::Default *vt, std::string& name) : address(address), vtype(vt), name(name) {
 		}
 
 };

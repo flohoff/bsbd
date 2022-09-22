@@ -24,7 +24,7 @@ find_package(PkgConfig)
 set(THREADS_HAVE_PTHREAD_ARG 1)
 find_package(Threads REQUIRED)
 
-add_executable(bsbd bsbd.cpp bus.cpp serial.cpp crc.cpp AddressMap.cpp)
+add_executable(bsbd bsbd.cpp bus.cpp serial.cpp crc.cpp AddressMap.cpp vtype.cpp)
 target_include_directories(bsbd PRIVATE ${SERIAL_INCLUDE_DIRS})
 target_link_libraries(bsbd PRIVATE ${Boost_LIBRARIES} ${SERIAL_LDFLAGS} ${CMAKE_THREAD_LIBS_INIT} nlohmann_json::nlohmann_json)
 

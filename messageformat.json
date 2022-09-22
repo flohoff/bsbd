@@ -1,48 +1,13 @@
 {
-	"types": {
-		"temp-C-float3div64": {
-			"type": "float",
-			"size": 3,
-			"divisor": 64,
-			"unit": "°C"
-		},
-		"perc-int2": {
-			"type": "integer",
-			"size": 2,
-			"unit": "%"
-		},
-		"datetime": {
-			"type": "datetime",
-			"size": 9
-		},
-		"hkinfo": {
-			"type": "unknown",
-			"size": 10
-		},
-		"unknown": {
-			"type": "unknown",
-			"size": 0
-		},
-		"brennerstatus": {
-			"type": "unknown",
-			"size": 4
-		},
-		"bit-anaus": {
-			"type": "bit",
-			"set": "An",
-			"unset": "Aus",
-			"size": 1
-		}
-	},
 	"busaddress": {
-       "0x00": { "name": "Heiz" },
-	   "0x0a": { "name": "DSP1" },
-	   "0x42": { "name": "BSBd" }		
+		"0x00": { "name": "Heiz" },
+		"0x0a": { "name": "DSP1" },
+		"0x42": { "name": "BSBd" }
 	},
 	"messages": [
 		{	
 			"address": "0x0D3D0519",
-			"type": "temp-C-float3div64",
+			"type": "float3-div64-tempC",
 			"access": "ro",
 			"name": "Kesseltemperatur"
 		},
