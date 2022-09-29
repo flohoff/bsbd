@@ -54,6 +54,8 @@ class Message {
 		bool needs_swap(void ) const {
 			if (messagetype() == MT_QUERY)
 				return true;
+			if (messagetype() == MT_SET)
+				return true;
 			return false;
 		}
 
