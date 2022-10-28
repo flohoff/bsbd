@@ -6,10 +6,15 @@
 #include <nlohmann/json.hpp>
 #include <boost/program_options.hpp>
 
+#include <mqtt/async_client.h>
+
 #include "bus.h"
 #include "message.h"
 #include "vtype.h"
 #include "AddressMap.h"
+#include "mqtt.h"
+
+#include "config.h"
 
 namespace po = boost::program_options;
 
@@ -75,8 +80,11 @@ int main(int argc, char **argv) {
 	messageformat_parse(config["messageformat"].get<std::string>());
 	std::vector<Bus>	busses;
 
-	for(auto &busconfig : config["busses"]) {
-		std::cout << busconfig.dump() << std::endl;
+	auto mqttconfig=config["mqtt"].get<config::mqtt>();
+	auto mqtt=MQTT(mqttconfig);
+
+	for(auto &busconfigjson : config["busses"]) {
+		auto busconfig=busconfigjson.get<config::bus>();
 		Bus	newbus(busconfig);
 	}
 

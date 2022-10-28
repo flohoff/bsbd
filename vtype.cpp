@@ -64,6 +64,10 @@ class Bit : public Default {
 		}
 };
 
+class Enum : public Default {
+    public:
+        Enum(std::string name) : Default(name, this) {}
+};
 
 } // Namespace VT
 
@@ -74,3 +78,4 @@ static VT::Hexdump  hkinfo("hkinfo");
 static VT::DateTime datetime("datetime");
 static VT::Float    float3div64tempC("float3-div64-tempC", 3, "°C", 64);
 static VT::Bit      bitanaus("bit-anaus", 1, "an", "aus");
+static VT::Enum     enumlist("enum");

@@ -46,6 +46,16 @@
 			"type": "bit-anaus",
 			"access": "ro",
 			"name": "Trinkwasserstatus"
+		},
+		{
+			"address": "0x2d3d0574",
+			"name": "HK1 Betriebsart",
+			"type": "enum",
+			"enum": {
+				"0": "Schutzbetrieb",
+				"1": "Automatik",
+				"3": "Komfort"
+			}
 		}
 	]
 }

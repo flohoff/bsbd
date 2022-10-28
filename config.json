@@ -1,7 +1,10 @@
 {
+	"mqtt": {
+		"broker": "nuc:1883"
+	},
 	"busses": [
 		{
-			"id": "1",
+			"id": 1,
 			"device": "/dev/ttyUSB0",
 			"baudrate": "4800",
 			"mode": "8o1",

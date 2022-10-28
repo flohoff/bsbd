@@ -1,14 +1,13 @@
 #include <iostream>
 
 #include "bus.h"
+#include "config.h"
 #include "frame.h"
 #include "message.h"
 
-Bus::Bus(json& busconfig) : busconfig(busconfig) {
+Bus::Bus(config::bus& config) : config(config) {
 	// FIXME - Parameter checking?
-	serial=new Serial(busconfig["device"].get<std::string>(),
-			busconfig["baudrate"].get<std::string>(),
-			busconfig["mode"].get<std::string>());
+	serial=new Serial(config.device, config.baudrate, config.mode);
 
 	reader=new std::thread(&Bus::Reader, this);
 }

@@ -4,23 +4,19 @@
 #include <iostream>
 #include <thread>
 
-#include <nlohmann/json.hpp>
-
 #include "serial.h"
+#include "config.h"
 #include "message.h"
-
-using json = nlohmann::json;
 
 class Bus {
 	private:
 	Serial		*serial;
-	json& 		busconfig;
+	config::bus	config;
 	std::thread	*reader;
-
 
 	void Reader();
 	public:
-	Bus(json& busconfig);
+	Bus(config::bus& config);
 	~Bus();
 };
 

@@ -20,11 +20,12 @@ include_directories(${Boost_INCLUDE_DIRS})
 
 find_package(nlohmann_json 3.2.0 REQUIRED)
 find_package(PkgConfig)
+find_package(PahoMqttCpp REQUIRED)
 
 set(THREADS_HAVE_PTHREAD_ARG 1)
 find_package(Threads REQUIRED)
 
-add_executable(bsbd bsbd.cpp bus.cpp serial.cpp crc.cpp AddressMap.cpp vtype.cpp)
+add_executable(bsbd bsbd.cpp bus.cpp serial.cpp crc.cpp AddressMap.cpp vtype.cpp mqtt.cpp)
 target_include_directories(bsbd PRIVATE ${SERIAL_INCLUDE_DIRS})
-target_link_libraries(bsbd PRIVATE ${Boost_LIBRARIES} ${SERIAL_LDFLAGS} ${CMAKE_THREAD_LIBS_INIT} nlohmann_json::nlohmann_json)
+target_link_libraries(bsbd PRIVATE ${Boost_LIBRARIES} ${SERIAL_LDFLAGS} ${CMAKE_THREAD_LIBS_INIT} nlohmann_json::nlohmann_json PahoMqttCpp::paho-mqttpp3)
 
