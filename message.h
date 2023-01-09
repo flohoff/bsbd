@@ -10,7 +10,8 @@
 #include "hexdump.hpp"
 
 typedef enum {
-	MT_QINF = 0x2,
+	MT_RINF = 0x1,
+	MT_SINF = 0x2,
 	MT_SET = 0x3,
 	MT_ACK = 0x4,
 	MT_NACK = 0x5,
@@ -20,7 +21,8 @@ typedef enum {
 } MType;
 
 static const std::map<int,std::string> messagetypestringtable = {
-	{ MT_QINF, "Query info" },
+	{ MT_RINF, "Request info" },
+	{ MT_SINF, "Send info" },
 	{ MT_SET, "Set" },
 	{ MT_ACK, "Ack" },
 	{ MT_NACK, "Nack" },
@@ -78,7 +80,7 @@ class Message {
 
 		bool hasvalue(void ) const {
 			if (messagetype() == MT_RESPONSE
-				|| messagetype() == MT_QINF)
+				|| messagetype() == MT_RINF)
 				return true;
 			return false;
 		}
