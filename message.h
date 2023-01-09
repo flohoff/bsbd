@@ -80,7 +80,7 @@ class Message {
 
 		bool hasvalue(void ) const {
 			if (messagetype() == MT_RESPONSE
-				|| messagetype() == MT_RINF)
+				|| messagetype() == MT_SINF)
 				return true;
 			return false;
 		}
