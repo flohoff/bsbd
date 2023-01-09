@@ -69,13 +69,32 @@ class Enum : public Default {
         Enum(std::string name) : Default(name, this) {}
 };
 
+class BrennerStatus : public Default {
+	public:
+        	BrennerStatus(std::string name) : Default(name, this) {}
+		std::string decode(std::string value) const {
+			char i=value.at(0);
+
+			std::stringstream ss;
+
+			ss 	<< (((i&0x04)==0x04) ? "On" : "Off") 
+				<< "(" 
+				<< std::hex << static_cast<uint8_t>(i) 
+				<< ")";
+
+			return ss.str();
+		}
+};
+
+
 } // Namespace VT
 
 
-static VT::Hexdump  hexdump("hexdump");
-static VT::Hexdump  unknown("unknown");
-static VT::Hexdump  hkinfo("hkinfo");
-static VT::DateTime datetime("datetime");
-static VT::Float    float3div64tempC("float3-div64-tempC", 3, "°C", 64);
-static VT::Bit      bitanaus("bit-anaus", 1, "an", "aus");
-static VT::Enum     enumlist("enum");
+static VT::Hexdump  		hexdump("hexdump");
+static VT::Hexdump  		unknown("unknown");
+static VT::Hexdump  		hkinfo("hkinfo");
+static VT::DateTime 		datetime("datetime");
+static VT::Float    		float3div64tempC("float3-div64-tempC", 3, "°C", 64);
+static VT::Bit      		bitanaus("bit-anaus", 1, "an", "aus");
+static VT::Enum     		enumlist("enum");
+static VT::BrennerStatus	bstatus("brennerstatus");
