@@ -6,6 +6,13 @@
 
 namespace hex
 {
+	static bool printable(char ch) {
+		if (ch >= 32 && ch <= 126) {
+			return true;
+		}
+		return false;
+	}
+
 	template<class Elem, class Traits>
 	inline void dump(const void* aData, std::size_t aLength, std::basic_ostream<Elem, Traits>& aStream, std::size_t aWidth = 16)
 	{
@@ -26,7 +33,7 @@ namespace hex
 					switch(pass)
 					{
 					case 1:
-						aStream << (ch < 32 ? '.' : ch);
+						aStream << (printable(ch) ? ch : '.');
 						break;
 					case 2:
 						if (next != line)
