@@ -64,7 +64,11 @@ class Message {
 		}
 
 		std::string messagetypestring(void ) const {
-			return messagetypestringtable.at(messagetype());
+			try {
+				return messagetypestringtable.at(messagetype());
+			} catch(const std::out_of_range& e) {
+				return "unknown";
+			}
 		}
 
 		std::string value(void ) const {
